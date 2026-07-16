@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valuation Report — XOhair Melun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="valorisation-styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+  <!-- COVER -->
+  <div class="page cover">
+    <div class="cover-frame">
+      <div class="cover-logo">XOhair</div>
+      <div class="cover-subtitle">Melun · Wig installation &amp; Virgin hair</div>
+      <div class="cover-title">Valuation Report<br/>Professional Website</div>
+      <div class="cover-meta">
+        <strong>Alfred Ahoussinou</strong><br/>
+        July 2026<br/>
+        Prepared for: Ola / XOhair
+      </div>
+      <div class="cover-badge">Confidential document</div>
+      <div class="cover-url">xo-hair-melun.netlify.app</div>
+    </div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="page content">
+    <div class="page-label">Contents</div>
+    <h1>Table of Contents</h1>
+    <p class="toc-intro">This report presents the market value of the XOhair Melun website, a detailed functional breakdown of the deliverable, a comparison with the French market, and the context of the symbolic price agreed with Ola.</p>
+    <ul class="toc-list">
+      <li><span class="toc-num">1.</span><span class="title">Executive summary</span></li>
+      <li><span class="toc-num">2.</span><span class="title">XOhair project overview</span></li>
+      <li><span class="toc-num">3.</span><span class="title">Site architecture diagram</span></li>
+      <li><span class="toc-num">4.</span><span class="title">Detailed feature inventory</span></li>
+      <li><span class="toc-num">5.</span><span class="title">Market comparison — price ranges</span></li>
+      <li><span class="toc-num">6.</span><span class="title">Detailed valuation (€2,000 – €4,500)</span></li>
+      <li><span class="toc-num">7.</span><span class="title">Junior developer rate (€1,500 – €3,000)</span></li>
+      <li><span class="toc-num">8.</span><span class="title">Price agreed with Ola: €200</span></li>
+      <li><span class="toc-num">9.</span><span class="title">Included / not included</span></li>
+      <li><span class="toc-num">10.</span><span class="title">Customer journey diagram</span></li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>Purpose of this document</strong> — Informational report (not a legal contract) intended to clarify the real value of the delivered project and the exceptional nature of the €200 amount. For day-to-day site usage, refer to the Ola Guide and the XO-HAIR-docs repository.</p>
+    </div>
+  </div>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="page content">
+    <h2>1. Executive summary</h2>
+    <p class="section-intro">The <strong>XOhair Melun</strong> website is a professional, fully custom web application deployed in production on Netlify. It combines a polished storefront (video hero, service and wig catalogues, policies, Melun RER location) with a complete online booking system, an admin area for Ola, automated emails via Brevo, and a PayPal/Revolut deposit module.</p>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="value">€2,000 – €4,500</div>
+        <div class="label">Estimated market value</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">€1,500 – €3,000</div>
+        <div class="label">Typical junior rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">€200</div>
+        <div class="label">Price agreed with Ola (symbolic)</div>
+      </div>
+    </div>
+    <p>For an equivalent deliverable on the French market, value typically ranges from <strong>€2,000 to €4,500</strong>. As a developer in the early stages of his career, a already reduced rate would be <strong>€1,500 to €3,000</strong>. Alfred nevertheless transfers the entire project to Ola for <strong>€200</strong> — a friendly gesture that does not reflect the real value of the work completed.</p>
+    <div class="highlight-box">
+      <p><strong>In short:</strong> Ola receives a professional, turnkey tool (storefront + booking + admin + emails + deposit), operational and documented, for an amount representing approximately 4 to 5% of the low end of market value.</p>
+    </div>
+  </div>
+
+  <!-- PROJECT OVERVIEW -->
+  <div class="page content">
+    <h2>2. XOhair project overview</h2>
+    <div class="section-block">
+      <h3>Context</h3>
+      <p><strong>XOhair</strong> is Ola's hair salon in <strong>Melun (77000, France)</strong>, specialising in melted lace wig installation, hair customisation, and Virgin hair extensions. Trained in London, Ola offers premium services in a professional setting, easily accessible from Paris via <strong>RER D and R line</strong> (Gare de Lyon → Melun).</p>
+    </div>
+    <div class="section-block">
+      <h3>Website objectives</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="col-item">Objective</th><th class="col-detail">Implementation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Professional visibility</strong></td><td>Elegant black &amp; copper storefront, 8-clip video hero, service and wig catalogues, consistent visual identity</td></tr>
+            <tr><td><strong>Reduce manual exchanges</strong></td><td>24/7 online booking with time slots calculated automatically based on salon hours</td></tr>
+            <tr><td><strong>Centralise management</strong></td><td>Admin area: dashboard, calendar, accept/decline, CSV export of appointments</td></tr>
+            <tr><td><strong>Automate communication</strong></td><td>Transactional emails via Brevo (4 HTML scenarios) with fallback relay</td></tr>
+            <tr><td><strong>Secure bookings</strong></td><td>€10 deposit via PayPal or Revolut before final confirmation</td></tr>
+            <tr><td><strong>Inform clients</strong></td><td>Clear policies (cancellation, lateness, appointment preparation) available online</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="section-block">
+      <h3>Technical stack</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="col-item">Component</th><th class="col-detail">Technology</th></tr></thead>
+          <tbody>
+            <tr><td>Framework</td><td>Next.js 15 (App Router) + React 19 + TypeScript</td></tr>
+            <tr><td>Hosting</td><td>Netlify (automatic builds, Netlify Blobs for data persistence)</td></tr>
+            <tr><td>Emails</td><td>Brevo (REST API) with Resend fallback</td></tr>
+            <tr><td>Payments</td><td>PayPal.me and Revolut.me links (€10 deposit)</td></tr>
+            <tr><td>Source code</td><td>Private GitHub repository <strong>XO-HAIR</strong></td></tr>
+            <tr><td>Documentation</td><td>Public repository <strong>XO-HAIR-docs</strong> (operational guides, no secrets)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Live site:</strong> xo-hair-melun.netlify.app · <strong>Instagram:</strong> @xo.haiir</p>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURE -->
+  <div class="page content">
+    <h2>3. Site architecture diagram</h2>
+    <p>The diagram below illustrates the overall flow: from the visitor on the site to emails, payments, and admin management.</p>
+    <div class="diagram-block">
+      <div class="diagram">
+        <pre class="mermaid">
+flowchart LR
+    subgraph Public["Public site"]
+        V[Visitor / Client]
+        SV[Storefront]
+        RS[Online booking]
+    end
+    subgraph Backend["Next.js / Netlify backend"]
+        API[API Routes]
+        STORE[(Netlify Blobs)]
+    end
+    subgraph Admin["Admin area"]
+        AD[Ola Dashboard]
+        CAL[Calendar]
+        EXP[CSV Export]
+    end
+    subgraph External["External services"]
+        BR[Brevo Emails]
+        PP[PayPal.me]
+        RV[Revolut.me]
+    end
+    V --> SV
+    V --> RS
+    RS --> API
+    API --> STORE
+    API --> BR
+    AD --> API
+    CAL --> API
+    EXP --> STORE
+    BR --> V
+    BR --> AD
+    RS --> PP
+    RS --> RV
+        </pre>
+      </div>
+      <p class="diagram-caption">Figure 1 — Functional architecture of the XOhair Melun website</p>
+    </div>
+    <p><strong>Reading the diagram:</strong> the client browses the storefront or goes directly to booking. Available slots are calculated in real time via the API (no CDN cache). Each request is stored in Netlify Blobs, triggers Brevo emails, and appears in Ola's admin. The deposit is paid via configurable PayPal or Revolut links.</p>
+    <ul class="bullet-list">
+      <li>No dependency on third-party booking SaaS (Calendly, SimplyBook, etc.)</li>
+      <li>Data hosted on Netlify Blobs — full control by Ola via the admin</li>
+      <li>Dual email channel (Brevo + fallback) for notification reliability</li>
+    </ul>
+  </div>
+
+  <!-- INVENTORY 1 -->
+  <div class="page content">
+    <h2>4. Detailed feature inventory</h2>
+    <p>Complete inventory of <strong>13 modules</strong> delivered, with estimated market value per component.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th class="col-module">Module</th><th class="col-feature">Feature</th><th class="col-desc">Concrete description</th><th class="col-value">Est. value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Storefront</strong></td><td>Video hero</td><td>8 MP4 clips, crossfade, posters, London UK / Melun RER D &amp; R badges, Book + Instagram CTAs</td><td>€350–600</td></tr>
+          <tr><td><strong>Storefront</strong></td><td>Services</td><td>10 detailed services (price, duration, inclusions), 8 bookable online, pre-filled Book button</td><td>€200–400</td></tr>
+          <tr><td><strong>Storefront</strong></td><td>Wigs</td><td>7 visual models, pricing grid 6 categories × 6 lengths (€125–200), pre-order banners</td><td>€250–450</td></tr>
+          <tr><td><strong>Storefront</strong></td><td>Gallery</td><td>Infrastructure for 96 synced Instagram reels, gallery page with CTA to @xo.haiir</td><td>€150–300</td></tr>
+          <tr><td><strong>Storefront</strong></td><td>Info pages</td><td>About, 5 appointment policy sections (accordion), Melun location, per-page SEO</td><td>€150–250</td></tr>
+          <tr><td><strong>Booking</strong></td><td>Calendar</td><td>3-step form, monthly calendar, 30-min slots, 24h notice, 60-day horizon, overlap handling</td><td>€500–900</td></tr>
+          <tr><td><strong>Booking</strong></td><td>Brevo emails</td><td>4 HTML email types: request received, Ola alert, confirmation (+ deposit links), decline; fallback relay</td><td>€200–400</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- INVENTORY 2 -->
+  <div class="page content">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th class="col-module">Module</th><th class="col-feature">Feature</th><th class="col-desc">Concrete description</th><th class="col-value">Est. value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Admin</strong></td><td>Dashboard</td><td>Stats, week view, daily schedule, monthly calendar, day/slot/week blocking</td><td>€400–700</td></tr>
+          <tr><td><strong>Admin</strong></td><td>Appointment mgmt</td><td>Search, filters, sorting, bulk actions, internal notes, status history, resend email</td><td>€300–500</td></tr>
+          <tr><td><strong>Admin</strong></td><td>Hours &amp; CSV</td><td>Working days, breaks, slot interval settings; UTF-8 CSV export (semicolon separator)</td><td>€150–300</td></tr>
+          <tr><td><strong>Payments</strong></td><td>Deposit</td><td>Configurable PayPal.me + Revolut.me links, success page, email and policy integration (€10)</td><td>€100–200</td></tr>
+          <tr><td><strong>Infra</strong></td><td>Netlify</td><td>Next.js build, environment variables, security headers, Blobs persistence, netlify.app domain</td><td>€150–300</td></tr>
+          <tr><td><strong>Docs</strong></td><td>Ola guides</td><td>GUIDE-Ola, admin, hours, Brevo, payments, policies — XO-HAIR-docs repository</td><td>€100–200</td></tr>
+          <tr class="table-total"><td colspan="3" style="text-align:right"><strong>Estimated total (sum of modules)</strong></td><td><strong>€3,000 – €5,300</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight-box">
+      <p>The range retained in section 6 (<strong>€2,000 – €4,500</strong>) incorporates negotiation margin and realistic positioning for a solo project, without agency or project management fees.</p>
+    </div>
+  </div>
+
+  <!-- MARKET + VALUATION -->
+  <div class="page content">
+    <h2>5. Market comparison — price ranges in France</h2>
+    <p>Reference points from the French web market (2025–2026) for comparable services.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th class="col-type">Service type</th><th class="col-range">Price range</th><th class="col-includes">Typically includes</th></tr></thead>
+        <tbody>
+          <tr><td>WordPress / Wix showcase site</td><td>€800 – €2,000</td><td>Template, 5–8 pages, contact form, hosting sometimes included for 1 year</td></tr>
+          <tr><td>Custom showcase site (Next.js)</td><td>€1,500 – €3,500</td><td>Custom design, responsive, basic SEO, no back-office</td></tr>
+          <tr><td>Booking SaaS or custom integration</td><td>€500 – €1,500</td><td>Time slots, reminders — often limited customisation</td></tr>
+          <tr><td>Custom admin back-office</td><td>€800 – €2,000</td><td>Dashboard, CRUD, authentication, data export</td></tr>
+          <tr><td>Transactional emails</td><td>€200 – €500</td><td>HTML templates, provider (Brevo, SendGrid), 3–5 scenarios</td></tr>
+          <tr><td>Full agency package</td><td>€3,000 – €8,000</td><td>Storefront + booking + admin + emails + 3–6 months support</td></tr>
+          <tr><td>Junior freelancer</td><td>€1,500 – €3,000</td><td>Reduced rate, portfolio under construction</td></tr>
+          <tr><td>Experienced freelancer</td><td>€3,500 – €7,000</td><td>Robust deliverable, documentation, best practices</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The XOhair project falls into <strong>"custom storefront + booking + admin + emails"</strong>, typically billed at <strong>€2,500 – €5,000</strong> by an experienced freelancer or small agency.</p>
+
+    <h2>6. Detailed valuation (€2,000 – €4,500)</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th class="col-module">Module</th><th class="col-range">Range</th><th class="col-includes">Justification</th></tr></thead>
+        <tbody>
+          <tr><td>Complete storefront</td><td>€700 – €1,200</td><td>8-clip hero, catalogues, policies, SEO, consistent black/copper design</td></tr>
+          <tr><td>Booking system</td><td>€600 – €1,100</td><td>Real-time calendar, business rules (durations, overlaps, notice), dedicated API</td></tr>
+          <tr><td>Admin area</td><td>€500 – €900</td><td>~2,450 lines: dashboard, calendar, bulk actions, hours settings</td></tr>
+          <tr><td>Automated emails</td><td>€200 – €400</td><td>4 HTML scenarios, Brevo + Resend fallback, relay to Ola</td></tr>
+          <tr><td>Payments &amp; policies</td><td>€100 – €200</td><td>Integrated deposit, legal pages, consistent client journey</td></tr>
+          <tr><td>Hosting &amp; deployment</td><td>€150 – €300</td><td>Netlify, Blobs, production configuration</td></tr>
+          <tr><td>Documentation &amp; handover</td><td>€100 – €200</td><td>Operational guides, public docs repo, initial onboarding</td></tr>
+          <tr class="table-total"><td><strong>Total</strong></td><td><strong>€2,350 – €4,300</strong></td><td>Commercial rounding: <strong>€2,000 – €4,500</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- JUNIOR + OLA PRICE -->
+  <div class="page content">
+    <div class="highlight-box">
+      <p><strong>Value drivers:</strong> 100% custom development (no Calendly), rich admin panel, dual email provider, Instagram pipeline (96 reels), operational and tested production environment.</p>
+    </div>
+
+    <h2>7. Typical rate for a junior developer (€1,500 – €3,000)</h2>
+    <p>Alfred Ahoussinou is in the <strong>early stages</strong> of his career as a web developer. For a junior profile with a portfolio under construction, the market generally accepts rates 30 to 40% lower than an experienced freelancer.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th class="col-criteria">Criterion</th><th class="col-impact">Impact on rate</th></tr></thead>
+        <tbody>
+          <tr><td>Limited portfolio</td><td>Lower range accepted by early adopter clients</td></tr>
+          <tr><td>Need for references</td><td>Preferential rate in exchange for testimonial / recommendation</td></tr>
+          <tr><td>Learning curve included</td><td>Research and iteration time not billed at senior rate</td></tr>
+          <tr><td>Relationship of trust</td><td>Project delivered in a friendly / family context</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Honest range for this profile: €1,500 – €3,000</strong> — even at this "junior" rate, the XOhair project remains below typical market value given its functional depth.</p>
+
+    <h2>8. Price agreed with Ola: €200</h2>
+    <p>Despite a valuation of <strong>€2,000 – €4,500</strong> (or <strong>€1,500 – €3,000</strong> at junior rate), Alfred transfers the entire project for:</p>
+    <div class="price-hero">
+      <div class="amount">€200</div>
+      <div class="label">Symbolic price — friendly gesture and support for the launch of XOhair. This amount is not a commercial assessment of the work completed.</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th class="col-item">In concrete terms</th><th class="col-detail">Equivalence</th></tr></thead>
+        <tbody>
+          <tr><td><strong>€200</strong></td><td>Approximately <strong>4 to 5%</strong> of the low end of market value</td></tr>
+          <tr><td><strong>Time invested</strong></td><td>Several weeks: development, design, testing, deployment, documentation</td></tr>
+          <tr><td><strong>What Ola receives</strong></td><td>Professional turnkey tool, operational, avoiding months of manual appointment management</td></tr>
+          <tr><td><strong>Not billed</strong></td><td>Iterations, Brevo/Netlify setup, guide writing, initial support</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- INCLUDED + JOURNEY -->
+  <div class="page content">
+    <h2>9. Included / not included</h2>
+    <div class="two-col-note">
+      <div class="note-card included">
+        <h3>✅ Included in handover</h3>
+        <ul>
+          <li>Live site (Netlify)</li>
+          <li>Full source code — private XO-HAIR repo</li>
+          <li>Complete admin (dashboard, calendar, CSV)</li>
+          <li>Brevo emails (4 scenarios)</li>
+          <li>Storefront pages + booking module</li>
+          <li>PayPal / Revolut deposit</li>
+          <li>XO-HAIR-docs documentation</li>
+          <li>Initial onboarding (private)</li>
+        </ul>
+      </div>
+      <div class="note-card excluded">
+        <h3>❌ Not included</h3>
+        <ul>
+          <li>Netlify hosting beyond free plan</li>
+          <li>Paid Brevo subscription (upgrade if high volume)</li>
+          <li>Custom domain name (e.g. xohair.fr)</li>
+          <li>Ongoing evolutionary maintenance</li>
+          <li>In-depth development training</li>
+          <li>Sensitive credentials in this public repo</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>10. Customer journey diagram</h2>
+    <p>From first click to appointment confirmation — complete client-side journey:</p>
+    <div class="diagram-block">
+      <div class="diagram">
+        <pre class="mermaid">
+sequenceDiagram
+    participant C as Client
+    participant S as XOhair Site
+    participant API as API
+    participant B as Brevo
+    participant O as Ola Admin
+    participant P as PayPal/Revolut
+    C->>S: Chooses service + slot
+    S->>API: Checks availability
+    API-->>S: Available slots
+    C->>S: Submits form
+    S->>API: Creates booking request
+    API->>B: Request received email
+    B-->>C: Confirmation
+    API->>B: Ola alert
+    B-->>O: Notification
+    O->>S: Accepts or declines
+    alt Accepted
+        API->>B: Confirmation + deposit
+        B-->>C: Pay €10
+        C->>P: Deposit
+    else Declined
+        API->>B: Slot unavailable
+        B-->>C: New slot suggested
+    end
+        </pre>
+      </div>
+      <p class="diagram-caption">Figure 2 — Client journey from booking to confirmation</p>
+    </div>
+    <p>The client books independently, receives an immediate email, Ola validates from her admin, the client pays the deposit if accepted. The entire flow is automated — Ola only needs to accept or decline.</p>
+
+    <div class="closing">
+      <p>This report clarifies the real value of the XOhair project and the exceptional nature of the €200 price. It does not constitute a legal contract. For day-to-day usage, see the Ola Guide and the XO-HAIR-docs repository.</p>
+      <p style="margin-top:0.85em;">— Alfred Ahoussinou, July 2026 · Confidential — XOhair</p>
+    </div>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#1a1a1a',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#c4724a',
+        lineColor: '#c4724a',
+        secondaryColor: '#141414',
+        tertiaryColor: '#0a0a0a',
+        fontFamily: 'Outfit, sans-serif',
+        fontSize: '11px'
+      },
+      flowchart: { curve: 'basis', padding: 14, htmlLabels: true },
+      sequence: { actorMargin: 36, messageMargin: 28, diagramMarginX: 12, diagramMarginY: 8 }
+    });
+  </script>
+</body>
+</html>

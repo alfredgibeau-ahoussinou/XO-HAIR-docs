@@ -31,7 +31,17 @@ confidential: true
 
 ## 1. Résumé exécutif
 
-Le site **XOhair Melun** est une application web professionnelle, entièrement développée sur mesure et déployée en production sur Netlify. Il combine une vitrine soignée (hero vidéo, catalogue prestations et perruques, politiques, localisation Melun RER) avec un système complet de réservation en ligne, un espace d'administration pour Ola, des emails automatiques via Brevo et un module d'acompte PayPal/Revolut. Pour un livrable équivalent sur le marché français, la valeur se situe entre **2 000 € et 4 500 €**. En tant que développeur en phase de démarrage, un tarif déjà réduit serait de **1 500 € à 3 000 €**. Alfred transmet néanmoins l'ensemble du projet à Ola pour **200 €**, geste amical qui ne reflète pas la valeur réelle du travail accompli.
+Le site **XOhair Melun** est une application web professionnelle, entièrement développée sur mesure et déployée en production sur Netlify. Il combine une vitrine soignée (hero vidéo, catalogue prestations et perruques, politiques, localisation Melun RER) avec un système complet de réservation en ligne, un espace d'administration pour Ola, des emails automatiques via Brevo et un module d'acompte PayPal/Revolut.
+
+| Indicateur | Fourchette |
+|------------|------------|
+| **Valeur marchande estimée** | 2 000 – 4 500 € |
+| **Tarif junior habituel** | 1 500 – 3 000 € |
+| **Prix accordé à Ola (symbolique)** | 200 € |
+
+Pour un livrable équivalent sur le marché français, la valeur se situe entre **2 000 € et 4 500 €**. En tant que développeur en phase de démarrage, un tarif déjà réduit serait de **1 500 € à 3 000 €**. Alfred transmet néanmoins l'ensemble du projet à Ola pour **200 €**, geste amical qui ne reflète pas la valeur réelle du travail accompli.
+
+**En bref :** Ola reçoit un outil professionnel clé en main (vitrine + réservation + admin + emails + acompte), opérationnel et documenté, pour un montant représentant environ 4 à 5 % de la valeur marchande basse.
 
 ---
 
