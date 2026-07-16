@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Note de valorisation — XOhair Melun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #141414;
+      --surface: #1a1a1a;
+      --copper: #c4724a;
+      --copper-light: #e8a87c;
+      --copper-dark: #8b4513;
+      --text: #ffffff;
+      --text-muted: #c8c8c8;
+      --border: #2a2a2a;
+    }
+
+    @page {
+      size: A4;
+      margin: 22mm 18mm 28mm 18mm;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    h1, h2, h3, .cover-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    h1 { font-size: 22pt; margin-bottom: 0.4em; }
+    h2 {
+      font-size: 15pt;
+      color: var(--copper-light);
+      margin: 1.6em 0 0.6em;
+      padding-bottom: 0.25em;
+      border-bottom: 1px solid var(--border);
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 12pt;
+      color: var(--copper);
+      margin: 1.2em 0 0.5em;
+      page-break-after: avoid;
+    }
+
+    p { margin-bottom: 0.85em; color: var(--text-muted); }
+    strong { color: var(--text); font-weight: 600; }
+    a { color: var(--copper-light); text-decoration: none; }
+
+    .page {
+      page-break-after: always;
+      position: relative;
+      min-height: 100vh;
+    }
+    .page:last-child { page-break-after: auto; }
+
+    /* Cover */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0a0a0a 0%, #141414 40%, #1a120e 100%);
+      padding: 3rem;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--copper-dark), var(--copper-light), var(--copper));
+    }
+    .cover-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, var(--copper-light), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.3em;
+    }
+    .cover-subtitle {
+      font-size: 13pt;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+    .cover-title {
+      font-size: 20pt;
+      max-width: 420px;
+      line-height: 1.35;
+      margin-bottom: 2.5rem;
+    }
+    .cover-meta {
+      font-size: 10pt;
+      color: var(--text-muted);
+      line-height: 2;
+    }
+    .cover-meta strong { color: var(--copper-light); }
+    .cover-badge {
+      margin-top: 3rem;
+      padding: 0.5em 1.5em;
+      border: 1px solid var(--copper);
+      border-radius: 2px;
+      font-size: 9pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+    }
+
+    /* TOC */
+    .toc-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+    .toc-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.55em 0;
+      border-bottom: 1px dotted var(--border);
+      color: var(--text-muted);
+    }
+    .toc-list li span:first-child { color: var(--text); }
+    .toc-num { color: var(--copper); font-weight: 600; margin-right: 0.6em; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1em 0 1.4em;
+      font-size: 9.5pt;
+      page-break-inside: auto;
+    }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    th {
+      background: var(--surface);
+      color: var(--copper-light);
+      font-weight: 600;
+      text-align: left;
+      padding: 0.65em 0.75em;
+      border: 1px solid var(--border);
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    td {
+      padding: 0.6em 0.75em;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: rgba(20, 20, 20, 0.6); }
+    td strong { color: var(--text); }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--surface);
+      border-left: 3px solid var(--copper);
+      padding: 1em 1.2em;
+      margin: 1.2em 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    .price-hero {
+      text-align: center;
+      margin: 1.5em 0;
+      padding: 1.2em;
+      background: linear-gradient(135deg, rgba(196,114,74,0.15), rgba(139,69,19,0.1));
+      border: 1px solid var(--copper-dark);
+      border-radius: 6px;
+    }
+    .price-hero .amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36pt;
+      font-weight: 700;
+      color: var(--copper-light);
+      line-height: 1.1;
+    }
+    .price-hero .label {
+      font-size: 10pt;
+      color: var(--text-muted);
+      margin-top: 0.3em;
+    }
+
+    /* Mermaid */
+    .diagram {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.2em;
+      margin: 1.2em 0;
+      overflow: hidden;
+      page-break-inside: avoid;
+    }
+    .diagram .mermaid {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Footer via fixed element for print */
+    .doc-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 18mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 18mm;
+      font-size: 8pt;
+      color: #666;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .content { padding-bottom: 20mm; }
+
+    .section-intro {
+      font-size: 11pt;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1em;
+    }
+
+    ul { margin: 0.5em 0 1em 1.4em; color: var(--text-muted); }
+    li { margin-bottom: 0.35em; }
+
+    .two-col-note {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2em;
+      margin: 1em 0;
+    }
+    .note-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1em;
+    }
+    .note-card h3 { margin-top: 0; font-size: 11pt; }
+    .note-card.included { border-top: 3px solid #4a9; }
+    .note-card.excluded { border-top: 3px solid #a55; }
+
+    .closing {
+      margin-top: 2em;
+      padding-top: 1.5em;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 9.5pt;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE COUVERTURE -->
+  <div class="page cover">
+    <div class="cover-logo">XOhair</div>
+    <div class="cover-subtitle">Melun · Pose de perruques &amp; Virgin hair</div>
+    <div class="cover-title">Note de valorisation<br/>Site web professionnel</div>
+    <div class="cover-meta">
+      <strong>Alfred Ahoussinou</strong><br/>
+      Juillet 2026<br/>
+      Pour Ola / XOhair
+    </div>
+    <div class="cover-badge">Document confidentiel</div>
+  </div>
+
+  <!-- SOMMAIRE -->
+  <div class="page content">
+    <h1>Sommaire</h1>
+    <ul class="toc-list">
+      <li><span><span class="toc-num">1.</span> Résumé exécutif</span></li>
+      <li><span><span class="toc-num">2.</span> Présentation du projet XOhair</span></li>
+      <li><span><span class="toc-num">3.</span> Schéma d'architecture du site</span></li>
+      <li><span><span class="toc-num">4.</span> Inventaire détaillé des fonctionnalités</span></li>
+      <li><span><span class="toc-num">5.</span> Comparatif marché — fourchettes de prix</span></li>
+      <li><span><span class="toc-num">6.</span> Valorisation détaillée (2 000 – 4 500 €)</span></li>
+      <li><span><span class="toc-num">7.</span> Tarif développeur débutant (1 500 – 3 000 €)</span></li>
+      <li><span><span class="toc-num">8.</span> Prix accordé à Ola : 200 €</span></li>
+      <li><span><span class="toc-num">9.</span> Ce qui est inclus / non inclus</span></li>
+      <li><span><span class="toc-num">10.</span> Schéma du parcours cliente</span></li>
+    </ul>
+
+    <div class="highlight-box" style="margin-top: 2.5em;">
+      <p><strong>Objet de ce document</strong> — Cette note explique la valeur marchande du site web XOhair et le prix symbolique auquel Alfred transmet le projet à Ola. Document informatif, non contractuel.</p>
+    </div>
+  </div>
+
+  <!-- SECTIONS 1-2 -->
+  <div class="page content">
+    <h2>1. Résumé exécutif</h2>
+    <p class="section-intro">Le site <strong>XOhair Melun</strong> est une application web professionnelle, entièrement développée sur mesure et déployée en production sur Netlify. Il combine une vitrine soignée (hero vidéo, catalogue prestations et perruques, politiques, localisation Melun RER) avec un système complet de réservation en ligne, un espace d'administration pour Ola, des emails automatiques via Brevo et un module d'acompte PayPal/Revolut. Pour un livrable équivalent sur le marché français, la valeur se situe entre <strong>2 000 € et 4 500 €</strong>. En tant que développeur en phase de démarrage, un tarif déjà réduit serait de <strong>1 500 € à 3 000 €</strong>. Alfred transmet néanmoins l'ensemble du projet à Ola pour <strong>200 €</strong>, geste amical qui ne reflète pas la valeur réelle du travail accompli.</p>
+
+    <h2>2. Présentation du projet XOhair</h2>
+    <h3>Contexte</h3>
+    <p><strong>XOhair</strong> est le salon de coiffure d'Ola à <strong>Melun (77000)</strong>, spécialisé dans la pose de perruques lace melted, la customisation capillaire et les mèches Virgin hair. Formée à Londres, Ola propose des prestations haut de gamme dans un cadre professionnel, facilement accessible depuis Paris via le <strong>RER D et la ligne R</strong> (Gare de Lyon → Melun).</p>
+
+    <h3>Objectifs du site</h3>
+    <table>
+      <thead><tr><th>Objectif</th><th>Réalisation</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Visibilité professionnelle</strong></td><td>Vitrine élégante noir &amp; cuivre, hero vidéo 8 clips, services et perruques</td></tr>
+        <tr><td><strong>Réduire les échanges manuels</strong></td><td>Réservation en ligne 24 h/24 avec créneaux calculés automatiquement</td></tr>
+        <tr><td><strong>Centraliser la gestion</strong></td><td>Admin : dashboard, calendrier, acceptation/refus, export CSV</td></tr>
+        <tr><td><strong>Automatiser la communication</strong></td><td>Emails transactionnels via Brevo (4 scénarios HTML)</td></tr>
+        <tr><td><strong>Sécuriser les réservations</strong></td><td>Acompte 10 € via PayPal ou Revolut</td></tr>
+        <tr><td><strong>Informer les clientes</strong></td><td>Politiques claires (annulation, retards, préparation RDV)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Stack technique</h3>
+    <table>
+      <thead><tr><th>Composant</th><th>Technologie</th></tr></thead>
+      <tbody>
+        <tr><td>Framework</td><td>Next.js 15 (App Router) + React 19 + TypeScript</td></tr>
+        <tr><td>Hébergement</td><td>Netlify (build auto, Netlify Blobs pour les données)</td></tr>
+        <tr><td>Emails</td><td>Brevo (API REST) avec fallback Resend</td></tr>
+        <tr><td>Paiements</td><td>Liens PayPal.me et Revolut.me (acompte 10 €)</td></tr>
+        <tr><td>Code source</td><td>Dépôt GitHub privé <strong>XO-HAIR</strong></td></tr>
+        <tr><td>Documentation</td><td>Dépôt public <strong>XO-HAIR-docs</strong></td></tr>
+      </tbody>
+    </table>
+    <p><strong>Site :</strong> xo-hair-melun.netlify.app · <strong>Instagram :</strong> @xo.haiir</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="page content">
+    <h2>3. Schéma d'architecture du site</h2>
+    <p>Le diagramme ci-dessous illustre le flux global : de la visiteuse sur le site jusqu'aux emails, paiements et gestion admin.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    subgraph Public["Site public"]
+        V[Visiteuse / Cliente]
+        SV[Site vitrine]
+        RS[Réservation en ligne]
+    end
+    subgraph Backend["Backend Next.js / Netlify"]
+        API[API Routes]
+        STORE[(Netlify Blobs)]
+    end
+    subgraph Admin["Espace admin"]
+        AD[Dashboard Ola]
+        CAL[Calendrier]
+        EXP[Export CSV]
+    end
+    subgraph Externe["Services externes"]
+        BR[Brevo Emails]
+        PP[PayPal.me]
+        RV[Revolut.me]
+    end
+    V --> SV
+    V --> RS
+    RS --> API
+    API --> STORE
+    API --> BR
+    AD --> API
+    CAL --> API
+    EXP --> STORE
+    BR --> V
+    BR --> AD
+    RS --> PP
+    RS --> RV
+      </pre>
+    </div>
+    <p>La cliente navigue sur le site vitrine ou accède à la réservation. Les créneaux sont calculés en temps réel via l'API. Chaque demande est enregistrée dans Netlify Blobs, déclenche des emails Brevo, et apparaît dans l'admin d'Ola. L'acompte se règle via PayPal ou Revolut.</p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="page content">
+    <h2>4. Inventaire détaillé des fonctionnalités</h2>
+    <p>Recensement complet des modules livrés avec estimation de valeur marché par composant.</p>
+    <table>
+      <thead>
+        <tr><th>Module</th><th>Fonctionnalité</th><th>Description</th><th>Valeur est.</th></tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="5"><strong>Vitrine</strong></td><td>Hero vidéo</td><td>8 clips MP4, crossfade, badges Londres / Melun RER</td><td>350–600 €</td></tr>
+        <tr><td>Services</td><td>10 prestations, 8 réservables, bouton Réserver pré-rempli</td><td>200–400 €</td></tr>
+        <tr><td>Perruques</td><td>7 modèles, grille 6×6 longueurs (125–200 €)</td><td>250–450 €</td></tr>
+        <tr><td>Galerie</td><td>96 reels IG synchronisés, CTA @xo.haiir</td><td>150–300 €</td></tr>
+        <tr><td>Pages info</td><td>À propos, 5 politiques RDV, SEO, footer Melun</td><td>150–250 €</td></tr>
+        <tr><td rowspan="2"><strong>Réservation</strong></td><td>Calendrier</td><td>3 étapes, créneaux 30 min, préavis 24 h, 60 jours</td><td>500–900 €</td></tr>
+        <tr><td>Emails Brevo</td><td>4 scénarios HTML + relais secours</td><td>200–400 €</td></tr>
+        <tr><td rowspan="3"><strong>Admin</strong></td><td>Dashboard</td><td>Stats, vue semaine, planning jour, calendrier</td><td>400–700 €</td></tr>
+        <tr><td>Gestion RDV</td><td>Filtres, bulk actions, notes, historique, renvoi email</td><td>300–500 €</td></tr>
+        <tr><td>Horaires &amp; CSV</td><td>Jours travaillés, pauses, export UTF-8</td><td>150–300 €</td></tr>
+        <tr><td><strong>Paiements</strong></td><td>Acompte</td><td>PayPal.me + Revolut.me, page succès, emails</td><td>100–200 €</td></tr>
+        <tr><td><strong>Infra</strong></td><td>Netlify</td><td>Build, Blobs, headers sécurité, variables env</td><td>150–300 €</td></tr>
+        <tr><td><strong>Docs</strong></td><td>Guides Ola</td><td>GUIDE-Ola, admin, horaires, Brevo, paiements</td><td>100–200 €</td></tr>
+        <tr><td colspan="3" style="text-align:right"><strong>Total estimé</strong></td><td><strong>3 000–5 300 €</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTIONS 5-6 -->
+  <div class="page content">
+    <h2>5. Comparatif marché — fourchettes de prix en France</h2>
+    <p>Repères du marché web français (2025–2026) pour des prestations comparables.</p>
+    <table>
+      <thead><tr><th>Type de prestation</th><th>Fourchette (France)</th><th>Inclus généralement</th></tr></thead>
+      <tbody>
+        <tr><td>Site vitrine WordPress / Wix</td><td>800 – 2 000 €</td><td>Template, 5–8 pages, formulaire contact</td></tr>
+        <tr><td>Site vitrine sur mesure (Next.js)</td><td>1 500 – 3 500 €</td><td>Design custom, responsive, SEO de base</td></tr>
+        <tr><td>Réservation SaaS ou sur mesure</td><td>500 – 1 500 €</td><td>Créneaux, rappels — personnalisation limitée</td></tr>
+        <tr><td>Back-office admin sur mesure</td><td>800 – 2 000 €</td><td>Dashboard, CRUD, auth, export</td></tr>
+        <tr><td>Emails transactionnels</td><td>200 – 500 €</td><td>Templates HTML, 3–5 scénarios</td></tr>
+        <tr><td>Forfait agence complète</td><td>3 000 – 8 000 €</td><td>Vitrine + résa + admin + emails + support</td></tr>
+        <tr><td>Freelance junior</td><td>1 500 – 3 000 €</td><td>Tarif réduit, portfolio en construction</td></tr>
+        <tr><td>Freelance confirmé</td><td>3 500 – 7 000 €</td><td>Livrable robuste, documentation</td></tr>
+      </tbody>
+    </table>
+    <p>Le projet XOhair correspond à <strong>« vitrine sur mesure + réservation + admin + emails »</strong>, typiquement facturé <strong>2 500 – 5 000 €</strong>.</p>
+
+    <h2>6. Valorisation détaillée (2 000 – 4 500 €)</h2>
+    <table>
+      <thead><tr><th>Module</th><th>Fourchette</th><th>Justification</th></tr></thead>
+      <tbody>
+        <tr><td>Site vitrine complet</td><td>700 – 1 200 €</td><td>Hero 8 clips, catalogues, politiques, SEO, design noir/cuivre</td></tr>
+        <tr><td>Système de réservation</td><td>600 – 1 100 €</td><td>Calendrier temps réel, règles métier, API dédiée</td></tr>
+        <tr><td>Espace admin</td><td>500 – 900 €</td><td>~2 450 lignes : dashboard, calendrier, bulk actions</td></tr>
+        <tr><td>Emails automatiques</td><td>200 – 400 €</td><td>4 scénarios, Brevo + fallback Resend</td></tr>
+        <tr><td>Paiements &amp; politiques</td><td>100 – 200 €</td><td>Acompte intégré, pages légales</td></tr>
+        <tr><td>Hébergement &amp; déploiement</td><td>150 – 300 €</td><td>Netlify, Blobs, config production</td></tr>
+        <tr><td>Documentation</td><td>100 – 200 €</td><td>Guides Ola, dépôt docs public</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>2 350 – 4 300 €</strong></td><td>Arrondi : <strong>2 000 – 4 500 €</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box">
+      <p><strong>Points forts :</strong> développement 100 % sur mesure (sans Calendly), panel admin riche, double provider email, pipeline Instagram (96 reels), production opérationnelle.</p>
+    </div>
+  </div>
+
+  <!-- SECTIONS 7-8 -->
+  <div class="page content">
+    <h2>7. Tarif habituel pour un développeur débutant (1 500 – 3 000 €)</h2>
+    <p>Alfred Ahoussinou est en <strong>phase de démarrage</strong>. Pour un profil junior, le marché accepte des tarifs inférieurs de 30 à 40 % par rapport à un freelance confirmé.</p>
+    <table>
+      <thead><tr><th>Critère</th><th>Impact sur le tarif</th></tr></thead>
+      <tbody>
+        <tr><td>Portfolio limité</td><td>Fourchette basse acceptée par les early adopters</td></tr>
+        <tr><td>Besoin de références</td><td>Tarif préférentiel contre témoignage</td></tr>
+        <tr><td>Courbe d'apprentissage</td><td>Temps de recherche non facturé au tarif senior</td></tr>
+        <tr><td>Relation de confiance</td><td>Projet réalisé dans un cadre amical / familial</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Fourchette honnête pour ce profil : 1 500 – 3 000 €</strong> — même à ce tarif, le projet reste en dessous de la valeur marchande habituelle.</p>
+
+    <h2>8. Prix accordé à Ola : 200 €</h2>
+    <p>Malgré une valorisation de <strong>2 000 – 4 500 €</strong> (ou <strong>1 500 – 3 000 €</strong> en tarif junior), Alfred transmet l'intégralité du projet pour :</p>
+    <div class="price-hero">
+      <div class="amount">200 €</div>
+      <div class="label">Prix symbolique — geste amical et soutien au lancement de XOhair</div>
+    </div>
+    <table>
+      <thead><tr><th>En termes concrets</th><th>Équivalence</th></tr></thead>
+      <tbody>
+        <tr><td><strong>200 €</strong></td><td>Environ <strong>4 à 5 %</strong> de la valeur marchande basse</td></tr>
+        <tr><td><strong>Temps investi</strong></td><td>Plusieurs semaines : dev, design, tests, déploiement, docs</td></tr>
+        <tr><td><strong>Ce qu'Ola reçoit</strong></td><td>Outil professionnel clé en main, opérationnel</td></tr>
+        <tr><td><strong>Non facturé</strong></td><td>Itérations, config Brevo/Netlify, guides, support initial</td></tr>
+      </tbody>
+    </table>
+    <p>Ce prix reflète une <strong>volonté de voir XOhair réussir</strong>, pas une sous-évaluation du savoir-faire technique.</p>
+  </div>
+
+  <!-- SECTIONS 9-10 -->
+  <div class="page content">
+    <h2>9. Ce qui est inclus / non inclus</h2>
+    <div class="two-col-note">
+      <div class="note-card included">
+        <h3>✅ Inclus</h3>
+        <ul>
+          <li>Site en production (Netlify)</li>
+          <li>Code source — dépôt privé XO-HAIR</li>
+          <li>Admin complet (dashboard, calendrier, CSV)</li>
+          <li>Emails Brevo (4 scénarios)</li>
+          <li>Pages vitrine + réservation</li>
+          <li>Acompte PayPal / Revolut</li>
+          <li>Documentation XO-HAIR-docs</li>
+          <li>Accompagnement initial (privé)</li>
+        </ul>
+      </div>
+      <div class="note-card excluded">
+        <h3>❌ Non inclus</h3>
+        <ul>
+          <li>Hébergement au-delà du plan gratuit</li>
+          <li>Abonnement Brevo payant</li>
+          <li>Nom de domaine personnalisé</li>
+          <li>Maintenance évolutive continue</li>
+          <li>Formation au développement</li>
+          <li>Secrets dans ce dépôt public</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>10. Schéma du parcours cliente</h2>
+    <p>Du premier clic à la confirmation du rendez-vous :</p>
+    <div class="diagram">
+      <pre class="mermaid">
+sequenceDiagram
+    participant C as Cliente
+    participant S as Site XOhair
+    participant API as API
+    participant B as Brevo
+    participant O as Ola Admin
+    participant P as PayPal/Revolut
+    C->>S: Choisit prestation + créneau
+    S->>API: Vérifie disponibilité
+    C->>S: Soumet formulaire
+    S->>API: Crée demande RDV
+    API->>B: Email demande reçue
+    B-->>C: Confirmation
+    API->>B: Alerte Ola
+    B-->>O: Notification
+    O->>S: Accepte ou refuse
+    alt Accepté
+        API->>B: Confirmation + acompte
+        B-->>C: Payer 10 €
+        C->>P: Acompte
+    else Refusé
+        API->>B: Créneau indisponible
+        B-->>C: Nouveau créneau proposé
+    end
+      </pre>
+    </div>
+    <p>La cliente réserve en autonomie, Ola valide depuis son admin, la cliente paie l'acompte si acceptée. Tout le flux est automatisé.</p>
+
+    <div class="closing">
+      <p>Cette note clarifie la valeur réelle du projet et le caractère exceptionnel du prix de 200 €. Elle ne constitue pas un contrat juridique. Pour l'utilisation quotidienne, voir le Guide Ola et XO-HAIR-docs.</p>
+      <p style="margin-top:1em;">— Alfred Ahoussinou, Juillet 2026</p>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span>Document confidentiel — XOhair</span>
+    <span>Alfred Ahoussinou · Juillet 2026</span>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#1a1a1a',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#c4724a',
+        lineColor: '#c4724a',
+        secondaryColor: '#141414',
+        tertiaryColor: '#0a0a0a',
+        fontFamily: 'Outfit, sans-serif'
+      },
+      flowchart: { curve: 'basis', padding: 12 },
+      sequence: { actorMargin: 40, messageMargin: 30 }
+    });
+  </script>
+</body>
+</html>
