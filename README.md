@@ -23,6 +23,8 @@ Documentation **publique** pour **XOhair** (Melun) : salon de pose de perruques,
 | [docs/guide-admin.md](./docs/guide-admin.md) | Utiliser l'espace admin du site |
 | [docs/brevo-email.md](./docs/brevo-email.md) | Configurer les emails (Brevo + Netlify) |
 | [docs/paiements-paypal-revolut.md](./docs/paiements-paypal-revolut.md) | Acompte 10 € — PayPal & Revolut |
+| [docs/valorisation-site-xohair.pdf](./docs/valorisation-site-xohair.pdf) | Note de valorisation du site (valeur marché & prix accordé) |
+| [docs/valorisation-site-xohair.md](./docs/valorisation-site-xohair.md) | Source Markdown de la note de valorisation |
 
 ## Dépôt code (privé)
 
